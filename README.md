@@ -1,10 +1,5 @@
 ### Create django project with custom user and readymade authenticated url
 
-##### Pull the code from the server.
-```sh
-django-admin startproject --template https://github.com/Bindeep/api-template/archive/master.zip <project_name>
-```
-
 ##### Create virtual Environment
 ```sh
 python3 -m venv .venv
