@@ -1,0 +1,20 @@
+# Basics
+.pyc
+*.pyc
+*.py[cod]
+__pycache__
+
+#env files
+.vscode
+.venv/
+.venvx/
+.venvx312/
+venv/
+
+
+config/settings/env.py
+apps/core/utils/__pycache__
+apps/__pycache__
+apps/core/__pycache__
+apps/users/__pycache__
+apps/redemptions/__pycache__
