@@ -7,8 +7,9 @@ from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
 from rest_framework_simplejwt.views import TokenObtainPairView
 
-from apps.core.viewsets import CreateListUpdateDestroyViewSet
+from apps.core.viewsets import CreateListUpdateDestroyViewSet, ReadOnlyViewSet
 from apps.users.api.v1.serializers import (
+    UserAllDataSerializer,
     UserDetailSerializer,
     CustomTokenObtainPairSerializer, PasswordChangeSerializer
 )
@@ -54,4 +55,18 @@ class UserViewSet(CreateListUpdateDestroyViewSet):
         user.set_password(password)
         user.save()
         return Response(serializer.data)
+    
+
+class UserAllDataViewSet(ReadOnlyViewSet):
+   """
+   Viewset to get all user data.
+   """
+   serializer_class = UserAllDataSerializer
+
+   def get_queryset(self):
+       return USER.objects.none()
+
+   def list(self, request, *args, **kwargs):
+       serializer = self.get_serializer({'user': request.user})
+       return Response(serializer.data)
 

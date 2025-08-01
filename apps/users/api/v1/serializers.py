@@ -118,3 +118,14 @@ class CustomTokenObtainPairSerializer(DummySerializer, TokenObtainPairSerializer
         data = super().validate(attrs)
         data['user'] = UserDetailSerializer(instance=self.user).data
         return data
+
+
+class UserAllDataSerializer(UserDetailSerializer):
+   """
+   Serializer to get all user data.
+   """
+   user = UserDetailSerializer(read_only=True)
+
+   class Meta:
+       model = USER
+       fields = ('user', )
